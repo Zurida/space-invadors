@@ -69,7 +69,8 @@ class Projectile {
     constructor({position, velocity}) {
         this.position = position
         this.velocity = velocity
-        this.radius = 3
+
+        this.radius = 5
     }
 
     draw() {
@@ -217,7 +218,7 @@ function animate() {
                 if (
                     projectile.position.y - projectile.radius <= invader.position.y + invader.height &&
                     projectile.position.x + projectile.radius >= invader.position.x &&
-                    projectile.position.x - projectile.radius <= invader.position.x &&
+                    projectile.position.x - projectile.radius <= invader.position.x + invader.width &&
                     projectile.position.y + projectile.radius >= invader.position.y
                     
                     
