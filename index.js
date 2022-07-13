@@ -142,8 +142,8 @@ class Grid {
 
         this.invaders = []
 
-        const columns = Math.floor(Math.random() * 2 + 5)
-        const rows = Math.floor(Math.random() * 5 + 2)
+        const columns = Math.floor(Math.random() * 1 + 5)
+        const rows = Math.floor(Math.random() * 2 + 1)
 
         this.width = columns * 80
 
@@ -175,7 +175,7 @@ class Grid {
 
 const player = new Player()
 const projectiles = []
-const grids = [new Grid()]
+const grids = []
 
 const keys = {
     a: {
@@ -189,13 +189,16 @@ const keys = {
     }
 }
 
+let frames = 0
+let randomInterval = Math.floor((Math.random() * 500) + 500)
+console.log(randomInterval)
+
 function animate() {
     requestAnimationFrame(animate)
     c.fillStyle = 'black'
     c.fillRect(0, 0, canvas.width, canvas.height)
     player.update()
     projectiles.forEach((projectile, index) => {
-        
         if (projectile.position.y + projectile.radius <= 0) {
             setTimeout(() => {
                 projectiles.splice(index, 1)
@@ -222,6 +225,15 @@ function animate() {
         player.velocity.x = 0
         player.rotation = 0
     }
+
+    if (frames % randomInterval === 0) {
+        // spawning enemies 
+        grids.push(new Grid())
+        randomInterval = Math.floor((Math.random() * 500) + 500)
+        frames = 0
+    }
+
+    frames++
 }
 
 animate()
