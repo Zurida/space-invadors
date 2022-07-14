@@ -14,9 +14,35 @@
             padding: 0;
             height: 100vh;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: antiquewhite;
+        }
+
+        div {
+            position: relative;
+        }
+
+        p {
+            position: absolute;
+            z-index: 10;
+            color: white;
+            top: 10px;
+            left: 10px;
+            margin: 0;
+            font-size: 14px;
+            font-family: 'sans-serif';
         }
     </style>
-    <canvas moz-opaque></canvas>
+    
+    <p>
+        <span>Score:</span> <span id="scoreEl">0</span>
+    </p>
 
+    <div>
+        <canvas moz-opaque></canvas>
+    </div>
+    
 </body>
 </html>
